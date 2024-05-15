@@ -6,11 +6,6 @@ public class Main {
     // this variables are used in the switch case below
     double currentExchange;
 
-    double euroPrice;
-    double dollarPrice;
-    double japaneseYenPrice;
-    double britishPoundPrice;
-    double bitCoinPrice;
 
     // Instance of scanner Class to read out prompt value
     Scanner input =  new Scanner(System.in);
@@ -48,21 +43,22 @@ public class Main {
 
     switch (answerChoise) {
       case 1:
-        while (true) {
-          try {
-
-            System.out.println("1: Euro to Dollar");
-            currentExchange = 1.0822;
-            System.out.println("What ammount you want to exchange?");
-            inputAmmount = input.nextDouble();
-            dollarPrice = inputAmmount * currentExchange;
-            System.out.println("$" + dollarPrice + " for € " + inputAmmount);
-            break;
-          } catch (InputMismatchException e) {
-            System.out.println("This is not a valid number");
-            input.nextLine(); // clear the scanner value
-          }
-        }
+//        while (true) {
+//          try {
+//
+//            System.out.println("1: Euro to Dollar");
+//            currentExchange = 1.0822;
+//            System.out.println("What ammount you want to exchange?");
+//            inputAmmount = input.nextDouble();
+//            dollarPrice = inputAmmount * currentExchange;
+//            System.out.println("$" + dollarPrice + " for € " + inputAmmount);
+//            break;
+//          } catch (InputMismatchException e) {
+//            System.out.println("This is not a valid number");
+//            input.nextLine(); // clear the scanner value
+//          }
+//        }
+        printOutConversion(1.0822, input);
         break;
       case 2:
         while (true) {
@@ -182,6 +178,21 @@ public class Main {
     }
     input.close(); // Closing the scanner
 
-  }
 
+  }
+  public static void printOutConversion(double currentExchange, Scanner input)  {
+    while (true) {
+      try {
+        System.out.println("2: Dollar to Euro");
+        System.out.println("What ammount you want to exchange?");
+        double inputAmmount = input.nextDouble();
+        double price = inputAmmount / currentExchange;
+        System.out.println("€" + price + " for $ " + inputAmmount);
+        break;
+      } catch (InputMismatchException e) {
+        System.out.println("This is not a valid number");
+        input.nextLine(); // clear the scanner value
+      }
+    }
+  }
 }
